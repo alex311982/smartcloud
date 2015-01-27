@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Text
  *
- * @ORM\Table(name="Text", uniqueConstraints={@ORM\UniqueConstraint(name="lang", columns={"text"})})
+ * @ORM\Table(name="Text")
  * @ORM\Entity(repositoryClass="SmartCloudSolutions\GubarevBundle\Repository\TextRepository")
  */
 class Text
