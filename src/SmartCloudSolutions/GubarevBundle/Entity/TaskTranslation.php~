@@ -1,0 +1,83 @@
+<?php
+
+namespace SmartCloudSolutions\GubarevBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TaskTranslation
+ */
+class TaskTranslation
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Task
+     */
+    private $task;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Translation
+     */
+    private $translation;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set task
+     *
+     * @param \SmartCloudSolutions\GubarevBundle\Entity\Task $task
+     * @return TaskTranslation
+     */
+    public function setTask(\SmartCloudSolutions\GubarevBundle\Entity\Task $task = null)
+    {
+        $this->task = $task;
+
+        return $this;
+    }
+
+    /**
+     * Get task
+     *
+     * @return \SmartCloudSolutions\GubarevBundle\Entity\Task 
+     */
+    public function getTask()
+    {
+        return $this->task;
+    }
+
+    /**
+     * Set translation
+     *
+     * @param \SmartCloudSolutions\GubarevBundle\Entity\Translation $translation
+     * @return TaskTranslation
+     */
+    public function setTranslation(\SmartCloudSolutions\GubarevBundle\Entity\Translation $translation = null)
+    {
+        $this->translation = $translation;
+
+        return $this;
+    }
+
+    /**
+     * Get translation
+     *
+     * @return \SmartCloudSolutions\GubarevBundle\Entity\Translation 
+     */
+    public function getTranslation()
+    {
+        return $this->translation;
+    }
+}

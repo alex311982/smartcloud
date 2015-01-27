@@ -1,0 +1,80 @@
+<?php
+
+namespace SmartCloudSolutions\GubarevBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TaskGroupValues
+ *
+ * @ORM\Table(name="Task_group_values", uniqueConstraints={@ORM\UniqueConstraint(name="period", columns={"period", "task_id", "group_id"})}, indexes={@ORM\Index(name="group_id", columns={"group_id"}), @ORM\Index(name="task_id", columns={"task_id"})})
+ * @ORM\Entity
+ */
+class TaskGroupValues
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="period", type="string", length=32, nullable=false)
+     */
+    private $period;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="day_from", type="boolean", nullable=false)
+     */
+    private $dayFrom;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="avans", type="boolean", nullable=false)
+     */
+    private $avans;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="days", type="smallint", nullable=false)
+     */
+    private $days;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="accumulate", type="boolean", nullable=false)
+     */
+    private $accumulate;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Task
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCloudSolutions\GubarevBundle\Entity\Task")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="task_id", referencedColumnName="id")
+     * })
+     */
+    private $task;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Taxgroup
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCloudSolutions\GubarevBundle\Entity\Taxgroup")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * })
+     */
+    private $group;
+
+
+}

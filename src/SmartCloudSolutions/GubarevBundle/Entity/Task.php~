@@ -1,0 +1,63 @@
+<?php
+
+namespace SmartCloudSolutions\GubarevBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Task
+ *
+ * @ORM\Table(name="Task", uniqueConstraints={@ORM\UniqueConstraint(name="name", columns={"name"})}, indexes={@ORM\Index(name="text_id", columns={"text_id"})})
+ * @ORM\Entity
+ */
+class Task
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=32, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comment", type="string", length=255, nullable=true)
+     */
+    private $comment;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="filter_by_period", type="boolean", nullable=false)
+     */
+    private $filterByPeriod;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="critical_day_direction", type="string", length=32, nullable=false)
+     */
+    private $criticalDayDirection;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="smallint")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Text
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCloudSolutions\GubarevBundle\Entity\Text")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="text_id", referencedColumnName="id")
+     * })
+     */
+    private $text;
+
+
+}

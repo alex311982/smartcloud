@@ -1,0 +1,49 @@
+<?php
+
+namespace SmartCloudSolutions\GubarevBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Translation
+ *
+ * @ORM\Table(name="Translation", uniqueConstraints={@ORM\UniqueConstraint(name="lang", columns={"lang", "text_id"})}, indexes={@ORM\Index(name="text_id", columns={"text_id"})})
+ * @ORM\Entity
+ */
+class Translation
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lang", type="string", length=2, nullable=false)
+     */
+    private $lang;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", length=65535, nullable=false)
+     */
+    private $text;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \SmartCloudSolutions\GubarevBundle\Entity\Text
+     *
+     * @ORM\ManyToOne(targetEntity="SmartCloudSolutions\GubarevBundle\Entity\Text")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="text_id", referencedColumnName="id")
+     * })
+     */
+    private $text2;
+
+
+}

@@ -1,0 +1,3 @@
+smart_cloud_solutions_gubarev_homepage:
+    path:     /tasks
+    defaults: { _controller: SmartCloudSolutionsGubarevBundle:Default:index }

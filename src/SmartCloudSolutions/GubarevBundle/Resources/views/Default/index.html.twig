@@ -1,0 +1,48 @@
+{% extends 'SmartCloudSolutionsGubarevBundle::layout.html.twig' %}
+
+{% block title %}Filter form{% endblock%}
+
+{% block content %}
+
+<form id="filter" data-path="{{path('smart_cloud_solutions_gubarev_homepage')}}">
+    <table>
+        <tr>
+            <td>Группа:</td>
+            <td>
+                <select style="width:150px;" id="tax_group" name="tax_group">
+                    {% for group in groups %}
+                        <option value="{{group.id}}">{{group.name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Периодичность оплаты ЕСВ:</td>
+            <td>
+                <select style="width:150px;" id="repiod_esv" name="repiod_esv">
+                        <option value="monthly">ежемесячно</option>
+                        <option value="quarterly">ежеквартально</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Язык:</td>
+            <td>
+                <select style="width:150px;" id="lang" name="lang">
+                    <option value="ru">русский</option>
+                    <option value="ua">украинский</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input style="width:150px;" type="submit" name="do_filter" value="Фильтровать"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<div id="result"></div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+<?php
+
+namespace SmartCloudSolutions\GubarevBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+
+class MenType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder->add('group_name', 'entity', array(
+                'class' => 'SmartCloudSolutionsGubarevBundle:Gorup',
+                'property' => 'type',
+                'invalid_message' => 'Choose the group name'
+            ));
+        $builder->add('save', 'submit');
+    }
+
+    public function getName()
+    {
+        return 'tasks_list';
+    }
+}
