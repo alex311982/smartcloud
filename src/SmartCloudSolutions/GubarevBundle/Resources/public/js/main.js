@@ -19,14 +19,18 @@
                     function(data) {
                         $('#result').empty();
                         var list = 0;
-                        $.each(data, function(index, element) {
-                            $('#result').append("<p>" + index + "</p>");
-                            $('#result').append("<ul id='list_" + list + "'></ul>");
-                            $.each(element, function(i, li) {
-                                $("#list_" + list).append("<li>" + li + "</li>");
+                        if (data.list.length == 0) {
+                            $('#result').append("<p>" + data.error + "</p>");
+                        } else {
+                            $.each(data.list, function(index, element) {
+                                $('#result').append("<p style='text-transform:capitalize'>" + index + "</p>");
+                                $('#result').append("<ul id='list_" + list + "'></ul>");
+                                $.each(element, function(i, li) {
+                                    $("#list_" + list).append("<li>" + li + "</li>");
+                                });
+                                list++;
                             });
-                            list++;
-                        });
+                        }
                     },
                     'json'
                 );

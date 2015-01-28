@@ -41,7 +41,10 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $translationRepository = $em->getRepository('SmartCloudSolutionsGubarevBundle:Text');
-            $return = array();
+            $return = array(
+                'list' => array(),
+                'error' => ''
+            );
             foreach ($values as $key => $value) {
                 $result = array();
                 $isFilterByPeriod = $value->getTask()->getFilterByPeriod();
@@ -251,9 +254,15 @@ class DefaultController extends Controller
                 }
 
                 foreach ($result as $item) {
-                    $return[$taskName][] = str_replace(array_keys($item), array_values($item), $phrase);
+                    $return['list'][$taskName][] = str_replace(array_keys($item), array_values($item), $phrase);
                 }
 
+            }
+            if (empty($return['list'])) {
+                $return['error'] = $translationRepository->getTranslationByTextLang(
+                    'Ничего не найдено',
+                    $lang
+                );
             }
             return new JsonResponse($return);
         } else {
